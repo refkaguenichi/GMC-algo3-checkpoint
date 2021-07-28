@@ -1,0 +1,54 @@
+//Procedure
+PROCEDURE dot_product(var v1, var v2, var ps)
+VAR
+    i:INTEGER:=0;
+BEGIN
+    FOR i FROM 0 TO v1.length-1 STEP 1  DO
+       ps:=ps+v1[i]*v2[i];
+    END_FOR   
+END
+
+//Main algorithm with procedure
+ALGORITHM DOT PRODUCT
+VAR
+  vect : ARRAY_OF INTEGER[m][n];
+  ps, k:INTEGER; 
+BEGIN
+    FOR k FROM 0 TO vect.length-1 STEP 1 DO
+      dot_product(vect[k], vect[k+1], ps)
+      IF (ps=0) THEN
+        Write("The vectors are orthogonals")
+      END_IF
+    END_FOR
+END
+
+
+
+//Fonction
+FUNCTION dot_product(var v1, var v2) : INTEGER
+    i:INTEGER:=0;
+BEGIN
+    FOR i FROM 0 TO v1.length-1 STEP 1  DO
+       ps:=ps+v1[i]*v2[i];
+       return ps;
+    END_FOR 
+END
+
+
+
+//Main algorithm with function
+ALGORITHM DOT PRODUCT
+VAR
+  vect : ARRAY_OF INTEGER[m][n];
+  ps, k:INTEGER; 
+BEGIN
+    FOR k FROM 0 TO vect.length-1 STEP 1 DO
+      ps=dot_product(vect[k], vect[k+1])
+      IF (ps=0) THEN
+        Write("The vectors are orthogonals")
+      END_IF
+    END_FOR
+END
+
+
+
